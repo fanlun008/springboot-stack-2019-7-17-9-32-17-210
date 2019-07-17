@@ -2,7 +2,7 @@ package com.tw.apistackbase;
 
 
 import com.tw.apistackbase.entity.CrownCase;
-import com.tw.apistackbase.entity.CrownDetail;
+import com.tw.apistackbase.entity.Procuratorate;
 import com.tw.apistackbase.repo.CrownCaseRepository;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -26,8 +26,10 @@ public class CrownCaseTest {
 
     @Test
     public void test_add_case() {
+        Procuratorate procuratorate = new Procuratorate("A检察院");
+
         CrownCase crownCase = new CrownCase();
-        crownCase.setCaseName("潮阳区贿赂2次").setHappenTime(new Date());
+        crownCase.setCaseName("潮阳区2次").setHappenTime(new Date()).setProcuratorate(procuratorate);
 
         CrownCase savedCase = caseRepository.saveAndFlush(crownCase);
 

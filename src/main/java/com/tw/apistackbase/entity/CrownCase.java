@@ -6,6 +6,7 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -26,6 +27,9 @@ public class CrownCase {
 
     @OneToOne(cascade = CascadeType.ALL)
     private CrownDetail crownDetail;
+
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    private Procuratorate procuratorate;
 
     public CrownCase(String caseName) {
         this.caseName = caseName;

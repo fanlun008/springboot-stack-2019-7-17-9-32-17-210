@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -18,4 +19,16 @@ public class Procuratorate {
     @NotNull
     @Column(length = 50, unique = true)
     private String name;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "procuratorate", fetch = FetchType.EAGER)
+    private List<CrownCase> cases;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "procuratorate")
+    private List<Prosecutor> prosecutors;
+
+    public Procuratorate(@NotNull String name) {
+        this.name = name;
+    }
+
+
 }

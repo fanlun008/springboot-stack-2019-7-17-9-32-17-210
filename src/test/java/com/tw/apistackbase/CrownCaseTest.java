@@ -2,6 +2,7 @@ package com.tw.apistackbase;
 
 
 import com.tw.apistackbase.entity.CrownCase;
+import com.tw.apistackbase.entity.CrownDetail;
 import com.tw.apistackbase.repo.CrownCaseRepository;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -51,5 +52,21 @@ public class CrownCaseTest {
         caseRepository.deleteById(3l);
         List<CrownCase> after = caseRepository.findAll();
         Assertions.assertSame(1, before.size()-after.size());
+    }
+
+    @Test
+    public void should_get_CrownCase_when_get_detail_ID() {
+//        CrownDetail crownDetail = new CrownDetail("长村案件-主观信息A", "长村案件-客观信息A");
+//        CrownCase crownCase = new CrownCase("长村案件");
+//        crownCase.setHappenTime(new Date());
+//        crownCase.setCrownDetail(crownDetail);
+//
+//        caseRepository.saveAndFlush(crownCase);
+
+        CrownCase byCrownDetail_id = caseRepository.findByCrownDetail_Id(2l);
+        Assertions.assertNotNull(byCrownDetail_id);
+
+        CrownCase crownCase = caseRepository.findById(1l).get();
+        Assertions.assertNotNull(crownCase);
     }
 }

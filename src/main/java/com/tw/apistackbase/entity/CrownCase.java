@@ -24,4 +24,10 @@ public class CrownCase {
     @Column(name = "happen_time", nullable = false)
     private Date happenTime;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private CrownDetail crownDetail;
+
+    public CrownCase(String caseName) {
+        this.caseName = caseName;
+    }
 }

@@ -14,4 +14,6 @@ public interface CrownCaseRepository extends JpaRepository<CrownCase, Long> {
 
     @Override
     void deleteById(Long aLong);
+
+    CrownCase findByCrownDetail_Id(Long id);
 }
